@@ -20,7 +20,7 @@ object ApiModule {
     @Singleton
     fun provideRetrofit(moshi: Moshi): Retrofit =
         Retrofit.Builder()
-            .baseUrl("https://api.weatherapi.com")
+            .baseUrl(BuildConfig.WHEATER_API_URL)
             .client(getHttpClient())
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
