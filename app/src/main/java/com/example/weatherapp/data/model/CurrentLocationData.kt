@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class CurrentLocation(
+data class CurrentLocationData(
     @Json(name = "last_updated_epoch")
     val lastUpdatedEpoch: Int? = null,
     @Json(name = "last_updated")

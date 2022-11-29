@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class ForecastLocation(
+data class ForecastLocationData(
     @Json(name = "forecastday")
-    val forecastDay: List<ForecastDay>? = null,
+    val forecastDay: List<ForecastDayData>? = null,
 )

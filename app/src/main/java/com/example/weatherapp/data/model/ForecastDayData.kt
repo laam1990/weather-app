@@ -4,16 +4,14 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class ForecastDay(
+data class ForecastDayData(
     @Json(name = "date")
     val date: String? = null,
     @Json(name = "date_epoch")
     val dateEpoch: Int? = null,
     //TODO add structure
     @Json(name = "day")
-    val day: Int? = null,
-    @Json(name = "astro")
-    val astro: Int? = null,
+    val day: ForecastFutureDayData? = null,
     @Json(name = "hour")
-    val hour: List<CurrentLocation>? = null,
+    val hour: List<CurrentLocationData>? = null,
 )

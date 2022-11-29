@@ -1,6 +1,9 @@
 package com.example.weatherapp.di
 
 import com.example.weatherapp.BuildConfig
+import com.example.weatherapp.data.api.ApiService
+import com.example.weatherapp.data.api.RemoteDataSource
+import com.example.weatherapp.data.api.RemoteDataSourceImpl
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -24,6 +27,16 @@ object ApiModule {
             .client(getHttpClient())
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
+
+    @Provides
+    @Singleton
+    fun provideApiService(retrofit: Retrofit): ApiService =
+        retrofit.create(ApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideRemoteDataSource(apiService: ApiService) =
+        RemoteDataSourceImpl(apiService) as RemoteDataSource
 
     private fun getHttpClient(): OkHttpClient {
         val okHttpClientBuilder = OkHttpClient.Builder()

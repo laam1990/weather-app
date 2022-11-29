@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class SearchLocation(
+data class SearchLocationData(
     @Json(name = "id")
     val id: Int? = null,
     @Json(name = "name")
@@ -14,9 +14,9 @@ data class SearchLocation(
     @Json(name = "country")
     val country: String? = null,
     @Json(name = "lat")
-    val lat: String? = null,
+    val lat: Double? = null,
     @Json(name = "lon")
-    val lon: String? = null,
+    val lon: Double? = null,
     @Json(name = "url")
     val url: String? = null
 )

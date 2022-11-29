@@ -4,11 +4,11 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Forecast(
+data class ForecastData(
     @Json(name = "location")
-    val location: Location? = null,
+    val location: LocationData? = null,
     @Json(name = "current")
-    val current: CurrentLocation? = null/*,
+    val current: CurrentLocationData? = null/*,
     @Json(name = "forecast")
     val forecast: ForecastLocation? = null,*/
 )
