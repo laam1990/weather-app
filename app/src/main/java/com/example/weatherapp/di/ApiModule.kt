@@ -19,6 +19,10 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object ApiModule {
 
+    @Singleton
+    @Provides
+    fun provideMoshi(): Moshi = Moshi.Builder().build()
+
     @Provides
     @Singleton
     fun provideRetrofit(moshi: Moshi): Retrofit =
