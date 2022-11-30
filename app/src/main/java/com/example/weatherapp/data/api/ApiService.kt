@@ -1,5 +1,6 @@
 package com.example.weatherapp.data.api
 
+import com.example.weatherapp.data.api.ApiConstant.FORECAST
 import com.example.weatherapp.data.api.ApiConstant.TEXT_TO_SEARCH
 import com.example.weatherapp.data.api.ApiConstant.VERSION_API
 import com.example.weatherapp.data.model.ForecastData
@@ -14,5 +15,12 @@ interface ApiService {
         @Query("key") key: String,
         @Query("q") textToSearch: String
     ) : List<SearchLocationData>
+
+    @GET(VERSION_API.plus(FORECAST))
+    suspend fun getForecast(
+        @Query("key") key: String,
+        @Query("q") name: String,
+        @Query("days") days: Int,
+    ) : ForecastData
 
 }

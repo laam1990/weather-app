@@ -16,9 +16,11 @@ object MapperModule {
     @Provides
     @Singleton
     fun provideForecastMapperImpl(
-        searchLocationMapper: SearchLocationMapper
+        searchLocationMapper: SearchLocationMapper,
+        forecastMapper: com.example.weatherapp.ui.mapper.ForecastMapper
     ) = ForecastMapperImpl(
-        searchLocationMapper
+        searchLocationMapper,
+        forecastMapper
     ) as ForecastMapper
 
 }

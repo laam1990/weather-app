@@ -2,6 +2,8 @@ package com.example.weatherapp.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.example.weatherapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,7 +17,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        startActivity(Intent(this@MainActivity, ForecastActivity::class.java))
-        finish()
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            startActivity(Intent(this@MainActivity, ForecastActivity::class.java))
+            finish()
+        },4000)
     }
 }

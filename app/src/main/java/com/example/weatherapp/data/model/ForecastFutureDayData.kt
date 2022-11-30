@@ -8,7 +8,7 @@ data class ForecastFutureDayData(
     @Json(name = "maxtemp_c")
     val maxTempC: Double? = null,
     @Json(name = "mintemp_c")
-    val minTempC: Int? = null,
+    val minTempC: Double? = null,
     @Json(name = "maxwind_kph")
     val maxWindKph: Int? = null
 )

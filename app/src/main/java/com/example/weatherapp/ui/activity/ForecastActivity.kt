@@ -7,6 +7,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import com.example.weatherapp.R
@@ -17,7 +18,7 @@ import com.example.weatherapp.ui.viewmodel.ForecastViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ForecastActivity : AppCompatActivity() {
+class ForecastActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     private lateinit var binding: ActivityForecastBinding
     private val viewModel: ForecastViewModel by viewModels()
@@ -26,7 +27,6 @@ class ForecastActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityForecastBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         initObservers()
         initViews()
     }
@@ -38,11 +38,13 @@ class ForecastActivity : AppCompatActivity() {
     }
 
     private fun configureRecycler() {
-        val adapter = LocationAdapter()
+        val adapter = LocationAdapter(LocationAdapter.OnClickListener {
+            Toast.makeText(this, it.country, Toast.LENGTH_LONG).show()
+        })
         binding.list.adapter = adapter
     }
 
-    private fun searchExpenses(query: String) {
+    private fun searchLocation(query: String) {
         viewModel.getLocations(query)
     }
 
@@ -71,7 +73,7 @@ class ForecastActivity : AppCompatActivity() {
     private fun handleSearchIntent(intent: Intent) {
         if (Intent.ACTION_SEARCH == intent.action) {
             intent.getStringExtra(SearchManager.QUERY)?.also { query ->
-                searchExpenses(query)
+                searchLocation(query)
             }
         }
     }
@@ -91,9 +93,20 @@ class ForecastActivity : AppCompatActivity() {
 
         searchView.setSearchableInfo(
             searchManager.getSearchableInfo(
-                ComponentName(this, ForecastActivity::class.java)
-            )
-        )
+                ComponentName(this, ForecastActivity::class.java)))
+
+        searchView.setOnQueryTextListener(this)
+        return true
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        newText?.let {
+            searchLocation(it)
+        }
         return true
     }
 }

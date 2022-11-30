@@ -4,13 +4,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.R
 import com.example.weatherapp.ui.models.SearchLocationViewData
 
-class LocationAdapter : RecyclerView.Adapter<LocationAdapter.LocationViewHolder>() {
+class LocationAdapter(private val onClickListener: OnClickListener) : RecyclerView.Adapter<LocationAdapter.LocationViewHolder>() {
 
     private val diffCallback = object : DiffUtil.ItemCallback<SearchLocationViewData>() {
         override fun areItemsTheSame(
@@ -42,11 +43,13 @@ class LocationAdapter : RecyclerView.Adapter<LocationAdapter.LocationViewHolder>
     override fun onBindViewHolder(holder: LocationViewHolder, position: Int) {
         val location = locations[position]
         holder.bind(location)
+        holder.locationItem.setOnClickListener { onClickListener.onClick(location) }
     }
 
     class LocationViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val name: TextView = view.findViewById(R.id.name)
         private val country: TextView = view.findViewById(R.id.country)
+        val locationItem: ConstraintLayout = view.findViewById(R.id.location_item)
         fun bind(location: SearchLocationViewData) {
             name.text = location.name
             country.text = location.country
@@ -55,5 +58,9 @@ class LocationAdapter : RecyclerView.Adapter<LocationAdapter.LocationViewHolder>
 
     override fun getItemCount(): Int {
         return locations.size
+    }
+
+    class OnClickListener(val clickListener: (location: SearchLocationViewData) -> Unit) {
+        fun onClick(location: SearchLocationViewData) = clickListener(location)
     }
 }

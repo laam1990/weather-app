@@ -8,7 +8,7 @@ data class ForecastData(
     @Json(name = "location")
     val location: LocationData? = null,
     @Json(name = "current")
-    val current: CurrentLocationData? = null/*,
+    val current: CurrentLocationData? = null,
     @Json(name = "forecast")
-    val forecast: ForecastLocation? = null,*/
+    val forecast: ForecastLocationData? = null
 )
