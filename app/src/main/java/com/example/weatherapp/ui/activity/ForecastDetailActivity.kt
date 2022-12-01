@@ -13,6 +13,7 @@ import com.example.weatherapp.R
 import com.example.weatherapp.common.view.ErrorFullScreen
 import com.example.weatherapp.common.view.UIErrorContent
 import com.example.weatherapp.common.view.visible
+import com.example.weatherapp.data.util.ErrorTypeData
 import com.example.weatherapp.data.util.Resource
 import com.example.weatherapp.databinding.ActivityForecastDetailBinding
 import com.example.weatherapp.ui.adapter.ForecastDayAdapter
@@ -50,6 +51,14 @@ class ForecastDetailActivity : AppCompatActivity(),
         viewModel.forecastLiveData.observe(this) { result ->
             when (result) {
                 is Resource.Error -> {
+                    when (result.errorTypeData) {
+                        is ErrorTypeData.ConnectionError -> {
+                            configureBTFErrorDisplay(true)
+                        }
+                        else -> {
+                            configureBTFErrorDisplay(false)
+                        }
+                    }
                     toggleProgressBar(false)
                     toggleDetails(false)
                 }

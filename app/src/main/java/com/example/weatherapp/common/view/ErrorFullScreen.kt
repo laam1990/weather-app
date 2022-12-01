@@ -14,8 +14,6 @@ import com.example.weatherapp.databinding.DialogServerErrorBinding
  * 1) Add widget or component in your xml
  * 2) Initialize the component in the Fragment or Activity calling
  * the methods setListener() and setContentData()
- *
- * Note: the samples are in Java (current use)
  */
 class ErrorFullScreen @JvmOverloads constructor(
     context: Context,
@@ -94,7 +92,6 @@ class ErrorFullScreen @JvmOverloads constructor(
     /**
      * @param errorType is to change the content in title, description and drawable image.
      *
-     * Example in: BettercoinFragment.java
      * @sample
      * UIErrorContent typeError;
      * typeError = new UIErrorContent.Connection("title", "description", R.drawable.ic_error_internet_connection);
