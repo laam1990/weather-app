@@ -10,5 +10,7 @@ data class ForecastFutureDayData(
     @Json(name = "mintemp_c")
     val minTempC: Double? = null,
     @Json(name = "maxwind_kph")
-    val maxWindKph: Int? = null
+    val maxWindKph: Double? = null,
+    @Json(name = "condition")
+    val conditionData: ConditionData? = null
 )

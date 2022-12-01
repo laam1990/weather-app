@@ -18,7 +18,9 @@ data class CurrentLocationData(
     @Json(name = "cloud")
     val cloud: Int? = null,
     @Json(name = "feelslike_c")
-    val feelsLikeC: String? = null
+    val feelsLikeC: String? = null,
+    @Json(name = "condition")
+    val conditionData: ConditionData? = null
 )
 
 

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">WeatherApp</string>
+    <string name="temp_c">%sº</string>
+    <string name="humidity">%s%%</string>
+    <string name="wind_label">Wind</string>
+    <string name="feels_like_label">Feels Like</string>
+    <string name="humidity_label">Humidity</string>
+    <string name="next_days">Next %s Days</string>
 </resources>

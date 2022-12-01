@@ -7,7 +7,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import com.example.weatherapp.R
@@ -39,7 +38,9 @@ class ForecastActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     private fun configureRecycler() {
         val adapter = LocationAdapter(LocationAdapter.OnClickListener {
-            Toast.makeText(this, it.country, Toast.LENGTH_LONG).show()
+            val intent = Intent(this@ForecastActivity, ForecastDetailActivity::class.java)
+            intent.putExtra("name", it.name)
+            startActivity(intent)
         })
         binding.list.adapter = adapter
     }
@@ -54,13 +55,7 @@ class ForecastActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                 is Resource.Error -> {
 
                 }
-
-                is Resource.Loading -> {
-                    binding.apply {
-
-                    }
-                }
-
+                is Resource.Loading -> {}
                 is Resource.Success -> {
                     result.data?.let {
                         (binding.list.adapter as LocationAdapter).locations = it.toMutableList()

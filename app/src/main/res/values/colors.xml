@@ -11,6 +11,7 @@
     <color name="blue_weather">#3f7cac</color>
     <color name="blue_weather_light">#b5e2fa</color>
     <color name="blue_weather_40">#653F7CAC</color>
+    <color name="forecast">#582c4d</color>
 
     <color name="text_subtitle">#0F1C14</color>
 

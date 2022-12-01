@@ -7,5 +7,6 @@ data class CurrentLocationViewData(
     val windKph: Double,
     val humidity: Int,
     val cloud: Int,
-    val feelsLikeC: String
+    val feelsLikeC: String,
+    val conditionData: ConditionViewData
 )

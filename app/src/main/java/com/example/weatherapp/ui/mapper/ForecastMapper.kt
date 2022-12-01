@@ -1,5 +1,6 @@
 package com.example.weatherapp.ui.mapper
 
+import com.example.weatherapp.data.model.ConditionData
 import com.example.weatherapp.data.model.CurrentLocationData
 import com.example.weatherapp.data.model.ForecastData
 import com.example.weatherapp.data.model.ForecastDayData
@@ -7,6 +8,7 @@ import com.example.weatherapp.data.model.ForecastFutureDayData
 import com.example.weatherapp.data.model.ForecastLocationData
 import com.example.weatherapp.data.model.LocationData
 import com.example.weatherapp.data.util.Mapper
+import com.example.weatherapp.ui.models.ConditionViewData
 import com.example.weatherapp.ui.models.CurrentLocationViewData
 import com.example.weatherapp.ui.models.ForecastDayViewData
 import com.example.weatherapp.ui.models.ForecastFutureDayViewData
@@ -45,7 +47,8 @@ class ForecastMapper @Inject constructor() :
             windKph = payload?.windKph ?: 0.0,
             humidity = payload?.humidity ?: 0,
             cloud = payload?.cloud ?: 0,
-            feelsLikeC = payload?.feelsLikeC.orEmpty()
+            feelsLikeC = payload?.feelsLikeC.orEmpty(),
+            conditionData = parseConditionViewData(payload?.conditionData)
         )
     }
 
@@ -71,7 +74,8 @@ class ForecastMapper @Inject constructor() :
         return ForecastFutureDayViewData(
             maxTempC = payload?.maxTempC ?: 0.0,
             minTempC = payload?.minTempC ?: 0.0,
-            maxWindKph = payload?.maxWindKph ?: 0
+            maxWindKph = payload?.maxWindKph ?: 0.0,
+            conditionData = parseConditionViewData(payload?.conditionData)
         )
     }
 
@@ -84,9 +88,17 @@ class ForecastMapper @Inject constructor() :
                 windKph = it.windKph ?: 0.0,
                 humidity = it.humidity ?: 0,
                 cloud = it.cloud ?: 0,
-                feelsLikeC = it.feelsLikeC.orEmpty()
+                feelsLikeC = it.feelsLikeC.orEmpty(),
+                conditionData = parseConditionViewData(it.conditionData)
             )
         }
         return itemList
+    }
+
+    private fun parseConditionViewData(payload: ConditionData?): ConditionViewData {
+        return ConditionViewData(
+            text = payload?.text.orEmpty(),
+            icon = payload?.icon.orEmpty()
+        )
     }
 }
