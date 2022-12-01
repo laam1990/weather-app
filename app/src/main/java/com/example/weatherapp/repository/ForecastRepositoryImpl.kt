@@ -1,6 +1,7 @@
 package com.example.weatherapp.repository
 
 import com.example.weatherapp.data.api.RemoteDataSource
+import com.example.weatherapp.data.util.ErrorHandler
 import com.example.weatherapp.data.util.Resource
 import com.example.weatherapp.data.util.networkResource
 import com.example.weatherapp.ui.models.ForecastViewData
@@ -10,6 +11,7 @@ import javax.inject.Inject
 
 class ForecastRepositoryImpl @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
+    private val errorHandler: ErrorHandler,
     private val forecastMapper: ForecastMapper
 ) : ForecastRepository {
 
@@ -20,6 +22,9 @@ class ForecastRepositoryImpl @Inject constructor(
             },
             mapperResponse = {
                 forecastMapper.getLocation(it)
+            },
+            errorHandling = {
+                errorHandler.getError(it)
             }
         )
 
@@ -30,6 +35,9 @@ class ForecastRepositoryImpl @Inject constructor(
             },
             mapperResponse = {
                 forecastMapper.getForecast(it)
+            },
+            errorHandling = {
+                errorHandler.getError(it)
             }
         )
 }

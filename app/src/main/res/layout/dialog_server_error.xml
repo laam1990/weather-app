@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue_weather_40">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_begin_40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="40dp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/ll_content_data"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/guideline_begin_40dp">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_horizontal_80"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.8" />
+
+                <ImageView
+                    android:id="@+id/iv_error_type"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/img_error_be_response"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_80"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_content_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    style="@style/Subtitle2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:textAlignment="center"
+                    tools:text="Hubo un problema para/ncargar la sección" />
+
+                <TextView
+                    android:id="@+id/tv_description"
+                    style="@style/Subtitle3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="50dp"
+                    android:textAlignment="center"
+                    tools:text="No se pudo cargar este contenido. Por favor intenta de nuevo." />
+
+                <LinearLayout
+                    android:id="@+id/ll_buttons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:orientation="vertical"
+                    android:paddingBottom="8dp"
+                    tools:visibility="visible">
+
+                    <Button
+                        android:id="@+id/btn_retry"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="Reintentar" />
+
+                    <Button
+                        android:id="@+id/btn_settings"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="@color/blue_weather"
+                        android:textColor="@color/text_subtitle"
+                        android:textSize="16sp"
+                        tools:text="Comprobar conexión" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

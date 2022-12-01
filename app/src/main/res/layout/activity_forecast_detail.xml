@@ -8,6 +8,12 @@
     tools:context=".ui.activity.ForecastDetailActivity"
     android:background="@color/blue_weather_40">
 
+    <com.example.weatherapp.common.view.ErrorFullScreen
+        android:id="@+id/error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
     <ProgressBar
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"

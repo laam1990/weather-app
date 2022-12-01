@@ -6,4 +6,13 @@
     <string name="feels_like_label">Feels Like</string>
     <string name="humidity_label">Humidity</string>
     <string name="next_days">Next %s Days</string>
+
+    <string name="has_a_internet_problem">There was a connection\nproblem</string>
+    <string name="internet_problem">Please check your network connection\nand try again.</string>
+    <string name="retry">Retry</string>
+    <string name="check_internet_connection">Check your connection</string>
+
+    <string name="trouble_loading">Trouble loading</string>
+    <string name="has_a_backend_problem">This content could not be loaded.\nPlease try again.</string>
+
 </resources>

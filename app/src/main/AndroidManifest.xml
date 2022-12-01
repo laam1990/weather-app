@@ -18,6 +18,7 @@
         <activity
             android:name=".ui.activity.ForecastDetailActivity"
             android:exported="false"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Theme.WeatherApp.NoActionBar">
         </activity>
         <activity
